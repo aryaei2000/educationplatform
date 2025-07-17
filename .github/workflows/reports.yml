@@ -15,6 +15,8 @@ jobs:
   report-ubuntu: 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      
       - name: Create lint report
         if: success() || failure()
         uses: dorny/test-reporter@v1
