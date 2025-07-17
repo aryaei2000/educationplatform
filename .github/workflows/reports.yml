@@ -23,8 +23,7 @@ jobs:
         with:
             name: lint-results
             artifact: lint-results
-            path: "*.xml"
-            reporter: java-junit
+            path: "lint-results.xml"
             fail-on-error: true
     
       - name: Create test report
