@@ -32,6 +32,13 @@ jobs:
       
       - name: Code linting
         run: npm run lint --workspaces
+      - uses: actions/upload-artifact@v4  # upload test results
+        if: ${{ !cancelled() }}           # run this step even if previous step failed
+        with:
+          name: lint-results
+          path: "\
+           platform/reports/lint-results.xml,\
+           tokenserver/reports/lint-results.xml"
 
       - name: Build the education platform
         id: build-platform
