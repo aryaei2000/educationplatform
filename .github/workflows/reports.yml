@@ -24,7 +24,7 @@ jobs:
             name: lint-results
             artifact: lint-results
             path: "*.xml"
-            reporter: java-junit
+            reporter: jest-junit
             fail-on-error: true
     
       - name: Create test report
