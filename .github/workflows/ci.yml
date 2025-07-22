@@ -49,6 +49,14 @@ jobs:
         id: run-unit-tests
         if: success() || failure() && steps.build-platform.outcome == 'success'
         run: npm test --workspaces
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4  # upload test results  
+        if: ${{ !cancelled() }}           # run this step even if previous step failed
+        with:
+          name: test-results
+          path: "reports/*.xml"
+          
         
   #build-mac: 
     #runs-on: macos-latest
