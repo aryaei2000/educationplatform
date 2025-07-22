@@ -38,7 +38,7 @@ jobs:
         if: ${{ !cancelled() }}           # run this step even if previous step failed
         with:
           name: lint-results
-          path: "./reports/lint-results.xml"
+          path: "tokenserver/reports/lint-results.xml"
              
       - name: Build the education platform
         id: build-platform
