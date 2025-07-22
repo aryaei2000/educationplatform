@@ -19,7 +19,7 @@ jobs:
       
       - name: Create lint report
         if: success() || failure()
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         with:
             name: lint-results
             artifact: lint-results
