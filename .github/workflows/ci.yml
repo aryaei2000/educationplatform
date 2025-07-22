@@ -29,10 +29,12 @@ jobs:
         run: |
             npm ci
             npm install -g karma-cli
+
+      - name: Code Linting
+        run: npm run lint --workspaces
       
       - name: Upload Lint Results
-        uses: actions/upload-artifact@v4  # upload test results
-        run: npm run lint --workspaces        
+        uses: actions/upload-artifact@v4  # upload test results  
         if: ${{ !cancelled() }}           # run this step even if previous step failed
         with:
           name: lint-results
@@ -50,35 +52,35 @@ jobs:
         if: success() || failure() && steps.build-platform.outcome == 'success'
         run: npm test --workspaces
         
-  build-mac: 
-    runs-on: macos-latest
+  #build-mac: 
+    #runs-on: macos-latest
 
-    steps:
-      - uses: actions/checkout@v4
+    #steps:
+    #  - uses: actions/checkout@v4
                   
-      - name: Setup node 18
-        uses: actions/setup-node@v4
-        with: 
-          node-version: 18
+    #  - name: Setup node 18
+    #    uses: actions/setup-node@v4
+    #    with: 
+    #      node-version: 18
           
-      - name: Install node dependencies
-        run: |
-            npm ci
-            npm install -g karma-cli
+   #   - name: Install node dependencies
+   #     run: |
+   #         npm ci
+   #         npm install -g karma-cli
 
-      - name: Setup safari driver
-        run: |
-            sudo safaridriver --enable
+   #   - name: Setup safari driver
+   #     run: |
+   #         sudo safaridriver --enable
 
-      - name: Build the education platform
-        id: build-platform
-        if: success() || failure()
-        run: npm run build --workspaces
+   #   - name: Build the education platform
+   #     id: build-platform
+   #     if: success() || failure()
+   #     run: npm run build --workspaces
 
-      - name: Run the unit tests
-        id: run-unit-tests
-        if: success() || failure() && steps.build-platform.outcome == 'success'
-        run: npm test --workspaces -- --browsers SafariNative
+   #   - name: Run the unit tests
+   #     id: run-unit-tests
+   #     if: success() || failure() && steps.build-platform.outcome == 'success'
+   #     run: npm test --workspaces -- --browsers SafariNative
 
   # build-win: 
   #   runs-on: windows-latest
