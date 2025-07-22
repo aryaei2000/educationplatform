@@ -23,9 +23,7 @@ jobs:
         with:
             name: lint-results
             artifact: lint-results
-            path: "\
-             platform/reports/lint-results.xml,\
-             tokenserver/reports/lint-results.xml"
+            path: "*.xml"
             reporter: jest-junit
             fail-on-error: true
     
