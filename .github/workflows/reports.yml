@@ -21,7 +21,7 @@ jobs:
         if: success() || failure()
         uses: dorny/test-reporter@v2
         with:
-            name: lint-results
+            name: Lint Results
             artifact: lint-results
             path: "*.xml"
             reporter: jest-junit
@@ -34,7 +34,7 @@ jobs:
           name: Unit Test Results
           artifact: test-results
           path: "*.xml"
-          reporter: java-junit
+          reporter: jest-junit
           fail-on-error: true
 
       - name: Setup .NET Core - for coverage report # Required to execute ReportGenerator
