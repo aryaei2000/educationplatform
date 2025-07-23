@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v4  # upload test results  
         if: ${{ !cancelled() }}           # run this step even if previous step failed
         with:
-          name: test-results
+          name: test-results-ubuntu
           path: "platform/reports/*.xml"
         
   build-mac: 
@@ -89,6 +89,13 @@ jobs:
         if: success() || failure() && steps.build-platform.outcome == 'success'
         run: npm test --workspaces -- --browsers SafariNative
 
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4  # upload test results  
+        if: ${{ !cancelled() }}           # run this step even if previous step failed
+        with:
+          name: test-results-mac
+          path: "platform/reports/*.xml"
+
   build-win: 
      runs-on: windows-latest
      env:
@@ -119,3 +126,10 @@ jobs:
          id: run-unit-tests
          if: success() || failure() && steps.build-platform.outcome == 'success'
          run: npm test --workspaces -- --browsers EdgeHeadless
+
+       - name: Upload Test Results
+         uses: actions/upload-artifact@v4  # upload test results  
+         if: ${{ !cancelled() }}           # run this step even if previous step failed
+         with:
+          name: test-results-win
+          path: "platform/reports/*.xml"
