@@ -46,8 +46,9 @@ jobs:
 
       - name: Create coverage md report 
         uses: actions/download-artifact@v4
-        name: test-results
-        path: "platform/reports/"
+        with:
+            name: test-results
+            path: "platform/reports/"
         
       - name: Create coverage md report 
         uses: danielpalme/ReportGenerator-GitHub-Action@5.4.9
