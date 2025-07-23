@@ -62,6 +62,8 @@ jobs:
       
       - name: Output coverage to summary
         if: success() || failure() && steps.run-unit-tests.outcome == 'success'
+        run: ls -l ./platform/reports/
+        run: ls -l ./platform/reports/test-results/
         run: cat ./platform/reports/test-results/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
 
   report-mac: 
