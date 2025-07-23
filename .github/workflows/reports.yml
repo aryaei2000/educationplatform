@@ -48,8 +48,9 @@ jobs:
         uses: danielpalme/ReportGenerator-GitHub-Action@5.2.1
         if: success() || failure() && steps.run-unit-tests.outcome == 'success'
         with:
-            reports: ./platform/reports/coverage-report.xml
-            targetdir: ./platform/reports/
+            artifact: test-results
+            reports: "coverage-report.xml"
+            targetdir: "test-results"
             reporttypes: MarkdownSummaryGithub
       
       - name: Output coverage to summary
