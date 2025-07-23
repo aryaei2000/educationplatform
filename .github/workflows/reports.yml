@@ -47,7 +47,7 @@ jobs:
       - name: Create coverage md report 
         uses: actions/download-artifact@v4
         with:
-            name: test-results
+            name: "test-results.zip"
             path: "platform/reports/"
         
       - name: Create coverage md report 
