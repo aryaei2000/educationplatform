@@ -45,10 +45,10 @@ jobs:
             dotnet-quality: 'ga'
 
       - name: Create coverage md report 
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.1
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.4.9
         if: success() || failure() && steps.run-unit-tests.outcome == 'success'
         with:
-            artifact: test-results
+            name: test-results
             reports: "coverage-report.xml"
             targetdir: "test-results"
             reporttypes: MarkdownSummaryGithub
