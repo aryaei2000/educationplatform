@@ -39,8 +39,8 @@ jobs:
         with:
           name: lint-results
           path: |
-            "tokenserver/reports/lint-results.xml"
-            "platform/reports/lint-results.xml"
+            tokenserver/reports/lint-results.xml
+            platform/reports/lint-results.xml
              
       - name: Build the education platform
         id: build-platform
