@@ -56,13 +56,13 @@ jobs:
         uses: danielpalme/ReportGenerator-GitHub-Action@5.4.9
         if: success() || failure() && steps.run-unit-tests.outcome == 'success'
         with:
-            reports: "platform/reports/test-results/*.xml"
+            reports: "platform/reports/*.xml"
             targetdir: "test-results"
             reporttypes: MarkdownSummaryGithub
       
       - name: Output coverage to summary
         if: success() || failure() && steps.run-unit-tests.outcome == 'success'
-        run: cat ./platform/reports/test-results/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+        run: cat ./platform/reports/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
 
   report-mac: 
     runs-on: macos-latest
